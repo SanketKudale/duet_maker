@@ -1,0 +1,26 @@
+name: duet_maker
+description: Record a selfie in sync with an original video and export a duet with original-only audio and filters.
+version: 0.1.0
+repository: https://github.com/SanketKudale/duet_maker.git
+platforms:
+  android:
+  ios:
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.10.6
+  video_player: ^2.9.1
+  ffmpeg_kit_flutter_full_gpl: ^6.0.3
+  path_provider: ^2.1.5
+  http: ^1.2.2
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+
+# for example app only
+flutter:
+  uses-material-design: true
