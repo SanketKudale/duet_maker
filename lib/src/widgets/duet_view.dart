@@ -1,10 +1,8 @@
-import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 import '../duet_controller.dart';
-import '../duet_options.dart';
 import '../duet_source.dart';
 
 /// A ready-to-use UI widget for picking/previewing and recording a duet.
