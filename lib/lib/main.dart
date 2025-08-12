@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:duet_maker/duet_maker.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,9 +8,9 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('duet_maker example')),
         body: DuetView(
           controller: DuetController(
             options: DuetOptions(

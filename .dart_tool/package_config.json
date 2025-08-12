@@ -68,10 +68,10 @@
       "languageVersion": "3.7"
     },
     {
-      "name": "ffmpeg_kit_flutter_full_gpl",
-      "rootUri": "file:///C:/Users/sksan/AppData/Local/Pub/Cache/hosted/pub.dev/ffmpeg_kit_flutter_full_gpl-6.0.3",
+      "name": "ffmpeg_kit_flutter_new",
+      "rootUri": "file:///C:/Users/sksan/AppData/Local/Pub/Cache/hosted/pub.dev/ffmpeg_kit_flutter_new-3.2.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.1"
     },
     {
       "name": "ffmpeg_kit_flutter_platform_interface",
@@ -81,7 +81,7 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///E:/flutter/packages/flutter",
+      "rootUri": "file:///C:/Users/sksan/fvm/versions/3.32.6/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -99,7 +99,7 @@
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///E:/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///C:/Users/sksan/fvm/versions/3.32.6/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -195,7 +195,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///E:/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///C:/Users/sksan/fvm/versions/3.32.6/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -286,7 +286,7 @@
   ],
   "generator": "pub",
   "generatorVersion": "3.8.1",
-  "flutterRoot": "file:///E:/flutter",
-  "flutterVersion": "3.32.4",
+  "flutterRoot": "file:///C:/Users/sksan/fvm/versions/3.32.6",
+  "flutterVersion": "3.32.6",
   "pubCache": "file:///C:/Users/sksan/AppData/Local/Pub/Cache"
 }
