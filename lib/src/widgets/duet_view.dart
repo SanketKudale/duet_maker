@@ -73,7 +73,7 @@ class _DuetViewState extends State<DuetView> {
                       child: player == null
                           ? const Center(child: Text('No original loaded'))
                           : AspectRatio(
-                              aspectRatio: player.value.aspectRatio,
+                              aspectRatio: 1.777,
                               child: VideoPlayer(player),
                             ),
                     ),
@@ -82,8 +82,7 @@ class _DuetViewState extends State<DuetView> {
                           ? cam == null || !cam.value.isInitialized
                               ? const Center(child: Text('Camera not ready'))
                               : AspectRatio(
-                                  aspectRatio: player.value.aspectRatio,
-                                  child: CameraPreview(cam))
+                                  aspectRatio: 1.777, child: CameraPreview(cam))
                           : const SizedBox.shrink(),
                     ),
                   ],
