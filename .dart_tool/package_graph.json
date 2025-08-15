@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "duet_maker",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": [
         "camera",
         "ffmpeg_kit_flutter_new",
