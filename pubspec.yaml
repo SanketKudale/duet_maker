@@ -1,6 +1,6 @@
 name: duet_maker
 description: Record a selfie in sync with an original video and export a duet with original-only audio and filters.
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/SanketKudale/duet_maker.git
 platforms:
   android:
