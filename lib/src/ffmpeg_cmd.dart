@@ -27,19 +27,19 @@ class FfmpegCmdBuilder {
 
     // --- COVER variant (fills pane, may crop) ---
     final vFilterCover =
-        "[0:v]scale=${paneW}:${paneH}:force_original_aspect_ratio=increase,"
-        "crop=${paneW}:${paneH},setsar=1[v0];"
+        "[0:v]scale=$paneW:$paneH:force_original_aspect_ratio=increase,"
+        "crop=$paneW:$paneH,setsar=1[v0];"
         "[1:v]hflip${_pref(selfieFilterChain(opts.filter))},"
-        "scale=${paneW}:${paneH}:force_original_aspect_ratio=increase,"
-        "crop=${paneW}:${paneH},setsar=1[v1];";
+        "scale=$paneW:$paneH:force_original_aspect_ratio=increase,"
+        "crop=$paneW:$paneH,setsar=1[v1];";
 
     // --- CONTAIN variant (no crop, may letterbox) ---
     final vFilterContain =
-        "[0:v]scale=${paneW}:${paneH}:force_original_aspect_ratio=decrease,"
-        "pad=${paneW}:${paneH}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1[v0];"
+        "[0:v]scale=$paneW:$paneH:force_original_aspect_ratio=decrease,"
+        "pad=$paneW:$paneH:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1[v0];"
         "[1:v]hflip${_pref(selfieFilterChain(opts.filter))},"
-        "scale=${paneW}:${paneH}:force_original_aspect_ratio=decrease,"
-        "pad=${paneW}:${paneH}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1[v1];";
+        "scale=$paneW:$paneH:force_original_aspect_ratio=decrease,"
+        "pad=$paneW:$paneH:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1[v1];";
 
     // Choose which visual fit you want:
     final vFilter = vFilterCover; // or vFilterContain;
@@ -49,11 +49,11 @@ class FfmpegCmdBuilder {
         : "[v0][v1]hstack=inputs=2:shortest=1[v]";
 
     // Audio: only ORIGINAL track if present (avoids echo); change to `-map 1:a?` for selfie audio.
-    final audioMap = '-map 0:a? -c:a aac -b:a 192k';
+    const audioMap = '-map 0:a? -c:a aac -b:a 192k';
 
     return "-y -i ${q(originalPath)} -i ${q(selfiePath)} "
-        "-filter_complex \"${vFilter} ${layoutFilter}\" "
-        "-map \"[v]\" ${audioMap} "
+        "-filter_complex \"$vFilter $layoutFilter\" "
+        "-map \"[v]\" $audioMap "
         "-r ${opts.targetFps} "
         "-c:v libx264 -preset veryfast -crf 23 -pix_fmt yuv420p "
         "-shortest ${q(outPath)}";

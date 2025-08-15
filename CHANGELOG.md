@@ -6,5 +6,5 @@
 ## 0.1.1
 - Updated with new ffmpeg as old is discontinued
 
-##0.1.2
+## 0.1.2
 - Video Layout fix
