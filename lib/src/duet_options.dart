@@ -25,7 +25,7 @@ class DuetOptions {
 
   const DuetOptions({
     this.outputSize = const Size(1080, 1920),
-    this.layout = DuetLayout.sideBySide,
+    this.layout = DuetLayout.topBottom,
     this.filter = SelfieFilter.none,
     this.countdownSeconds = 3,
     this.targetFps = 30,

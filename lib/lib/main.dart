@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
             options: DuetOptions(
               originalAudioOnly: true,
               filter: SelfieFilter.vivid,
-              layout: DuetLayout.sideBySide,
+              layout: DuetLayout.topBottom,
               targetFps: 30,
               countdownSeconds: 3,
             ),

@@ -67,7 +67,7 @@ class _DuetViewState extends State<DuetView> {
         Expanded(
           child: _loading
               ? Center(child: Text(_status ?? 'Loading...'))
-              : Row(
+              : Column(
                   children: [
                     Expanded(
                       child: player == null
@@ -78,9 +78,10 @@ class _DuetViewState extends State<DuetView> {
                             ),
                     ),
                     Expanded(
-                      child: cam == null || !cam.value.isInitialized
+                      child: player != null ? cam == null || !cam.value.isInitialized
                           ? const Center(child: Text('Camera not ready'))
-                          : CameraPreview(cam),
+                          : AspectRatio(aspectRatio: player!.value.aspectRatio,
+                          child: CameraPreview(cam)) : const SizedBox.shrink(),
                     ),
                   ],
                 ),
