@@ -78,10 +78,13 @@ class _DuetViewState extends State<DuetView> {
                             ),
                     ),
                     Expanded(
-                      child: player != null ? cam == null || !cam.value.isInitialized
-                          ? const Center(child: Text('Camera not ready'))
-                          : AspectRatio(aspectRatio: player!.value.aspectRatio,
-                          child: CameraPreview(cam)) : const SizedBox.shrink(),
+                      child: player != null
+                          ? cam == null || !cam.value.isInitialized
+                              ? const Center(child: Text('Camera not ready'))
+                              : AspectRatio(
+                                  aspectRatio: player!.value.aspectRatio,
+                                  child: CameraPreview(cam))
+                          : const SizedBox.shrink(),
                     ),
                   ],
                 ),

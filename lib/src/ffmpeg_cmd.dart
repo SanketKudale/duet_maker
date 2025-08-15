@@ -3,7 +3,7 @@ import 'filters.dart';
 
 class FfmpegCmdBuilder {
   final String originalPath; // input0
-  final String selfiePath;   // input1
+  final String selfiePath; // input1
   final DuetOptions opts;
 
   FfmpegCmdBuilder({
@@ -14,12 +14,12 @@ class FfmpegCmdBuilder {
 
   /// Builds a safe ffmpeg command string with proper quoting for paths.
   String build(String outPath) {
-    final width  = opts.outputSize.width.toInt();   // e.g., 1080
-    final height = opts.outputSize.height.toInt();  // e.g., 1920
+    final width = opts.outputSize.width.toInt(); // e.g., 1080
+    final height = opts.outputSize.height.toInt(); // e.g., 1920
 
     // Decide layout explicitly
-    final isTopBottom = opts.layout == DuetLayout.topBottom
-        || opts.layout != DuetLayout.sideBySide; // default to vertical
+    final isTopBottom = opts.layout == DuetLayout.topBottom ||
+        opts.layout != DuetLayout.sideBySide; // default to vertical
 
     // Per-pane target sizes
     final paneW = isTopBottom ? width : (width / 2).toInt();
