@@ -12,15 +12,18 @@ class DuetView extends StatefulWidget {
   final VoidCallback? onComposed;
   final void Function(String outputPath)? onComposedPath;
   final void Function(Object error)? onError;
+  final Color? buttonColor;
+  final Color? buttonTextColor;
 
-  const DuetView({
-    super.key,
-    required this.controller,
-    required this.source,
-    this.onComposed,
-    this.onComposedPath,
-    this.onError,
-  });
+  const DuetView(
+      {super.key,
+      required this.controller,
+      required this.source,
+      this.onComposed,
+      this.onComposedPath,
+      this.onError,
+      this.buttonColor = Colors.yellowAccent,
+      this.buttonTextColor = Colors.white});
 
   @override
   State<DuetView> createState() => _DuetViewState();
@@ -62,66 +65,81 @@ class _DuetViewState extends State<DuetView> {
     final cam = widget.controller.cameraController;
     final player = widget.controller.originalPlayer;
 
-    return Column(
-      children: [
-        Expanded(
-          child: _loading
-              ? Center(child: Text(_status ?? 'Loading...'))
-              : Column(
-                  children: [
-                    Expanded(
-                      child: player == null
-                          ? const Center(child: Text('No original loaded'))
-                          : AspectRatio(
-                              aspectRatio: 1.777,
-                              child: VideoPlayer(player),
-                            ),
-                    ),
-                    Expanded(
-                      child: player != null
-                          ? cam == null || !cam.value.isInitialized
-                              ? const Center(child: Text('Camera not ready'))
-                              : AspectRatio(
-                                  aspectRatio: 1.777, child: CameraPreview(cam))
-                          : const SizedBox.shrink(),
-                    ),
-                  ],
-                ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  try {
-                    await widget.controller.startRecordingWithPlayback();
-                    if (!mounted) return;
-                    setState(() {});
-                  } catch (e) {
-                    widget.onError?.call(e);
-                  }
-                },
-                child: const Text('Record'),
-              ),
-              const SizedBox(width: 12),
-              ElevatedButton(
-                onPressed: () async {
-                  try {
-                    await widget.controller.stopRecording();
-                    final res = await widget.controller.compose();
-                    widget.onComposed?.call();
-                    widget.onComposedPath?.call(res.outputPath);
-                  } catch (e) {
-                    widget.onError?.call(e);
-                  }
-                },
-                child: const Text('Stop & Compose'),
-              ),
-            ],
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: Stack(
+        children: [
+          Expanded(
+            child: _loading
+                ? Center(child: Text(_status ?? 'Loading...'))
+                : Column(
+                    children: [
+                      Expanded(
+                        child: player == null
+                            ? const Center(child: Text('No original loaded'))
+                            : AspectRatio(
+                                aspectRatio: 1.777,
+                                child: VideoPlayer(player),
+                              ),
+                      ),
+                      Expanded(
+                        child: player != null
+                            ? cam == null || !cam.value.isInitialized
+                                ? const Center(child: Text('Camera not ready'))
+                                : AspectRatio(
+                                    aspectRatio: 1.777,
+                                    child: CameraPreview(cam))
+                            : const SizedBox.shrink(),
+                      ),
+                    ],
+                  ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: widget.buttonColor,
+                        textStyle: TextStyle(color: widget.buttonTextColor)),
+                    onPressed: () async {
+                      try {
+                        await widget.controller.startRecordingWithPlayback();
+                        if (!mounted) return;
+                        setState(() {});
+                      } catch (e) {
+                        widget.onError?.call(e);
+                      }
+                    },
+                    child: Text('Record', style: TextStyle(color: widget.buttonTextColor),),
+                  ),
+                  const SizedBox(width: 12),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: widget.buttonColor,
+                        textStyle: TextStyle(color: widget.buttonTextColor)),
+                    onPressed: () async {
+                      try {
+                        await widget.controller.stopRecording();
+                        final res = await widget.controller.compose();
+                        widget.onComposed?.call();
+                        widget.onComposedPath?.call(res.outputPath);
+                      } catch (e) {
+                        widget.onError?.call(e);
+                      }
+                    },
+                    child: Text('Stop & Compose', style: TextStyle(color: widget.buttonTextColor)),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

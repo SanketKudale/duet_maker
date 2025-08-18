@@ -8,3 +8,9 @@
 
 ## 0.1.2
 - Video Layout fix
+
+## 0.1.3
+- Updates
+
+## 0.1.4
+- Updates
