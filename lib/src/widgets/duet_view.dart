@@ -115,7 +115,10 @@ class _DuetViewState extends State<DuetView> {
                         widget.onError?.call(e);
                       }
                     },
-                    child: Text('Record', style: TextStyle(color: widget.buttonTextColor),),
+                    child: Text(
+                      'Record',
+                      style: TextStyle(color: widget.buttonTextColor),
+                    ),
                   ),
                   const SizedBox(width: 12),
                   ElevatedButton(
@@ -132,7 +135,8 @@ class _DuetViewState extends State<DuetView> {
                         widget.onError?.call(e);
                       }
                     },
-                    child: Text('Stop & Compose', style: TextStyle(color: widget.buttonTextColor)),
+                    child: Text('Stop & Compose',
+                        style: TextStyle(color: widget.buttonTextColor)),
                   ),
                 ],
               ),
